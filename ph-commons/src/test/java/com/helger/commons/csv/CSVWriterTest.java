@@ -46,6 +46,7 @@ import java.io.Reader;
 import java.io.Writer;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 
 import javax.annotation.Nonnull;
 
@@ -425,7 +426,7 @@ public final class CSVWriterTest
     final String [] data = new String [] { "\"\"", "test" };
     final String oracle = "\"\\\"\\\"\",\"test\"\n";
 
-    final File tempFile = File.createTempFile ("csvWriterTest", ".csv");
+    final File tempFile = Files.createTempFile ("csvWriterTest", ".csv").toFile ();
     tempFile.deleteOnExit ();
     final Writer fwriter = new OutputStreamWriter (new FileOutputStream (tempFile), CHARSET);
     try (final CSVWriter writer = new CSVWriter (fwriter))

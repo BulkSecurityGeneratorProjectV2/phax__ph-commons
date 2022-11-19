@@ -42,6 +42,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -55,7 +56,7 @@ public final class IntegrationFuncTest
   @Before
   public void setUp () throws IOException
   {
-    m_aTempFile = File.createTempFile ("csvWriterTest", ".csv");
+    m_aTempFile = Files.createTempFile ("csvWriterTest", ".csv").toFile ();
     m_aTempFile.deleteOnExit ();
   }
 
